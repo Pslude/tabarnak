@@ -1,2 +1,2 @@
 # tabarnak
-Host index server.
+Host index server. Need a host? Come to the tabarnak!
