@@ -76,9 +76,10 @@ if settings.DEBUG:
     ]
 
     # URLs for testing error pages in dev
-    urlpatterns += i18n_patterns(
+    # urlpatterns += i18n_patterns(
+    urlpatterns += [
         path('400/', TemplateView.as_view(template_name='400.html')),
         path('403/', TemplateView.as_view(template_name='403.html')),
         path('404/', default_views.page_not_found, {'exception': Http404()}),
         path('500/', default_views.server_error),
-    )
+    ]

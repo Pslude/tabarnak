@@ -10,12 +10,10 @@ router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 
 urlpatterns = [
-    #path('', views.IndexView.as_view(), name='index'),
+    path('', views.IndexView.as_view(), name='index'),
+    path('<int:pk>/', views.HostDetailView.as_view(), name='host-detail'),
 
     # REST framework API
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
-
-    path('<int:pk>/', views.HostDetailView.as_view(), name='host-detail'),
-
 ]
