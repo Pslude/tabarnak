@@ -1,0 +1,12 @@
+{"model": "host.region","pk": 31,"fields": {"name": "US-East","code": "USE","centroid": "SRID=4326;POINT (-74 40)"}}
+{"model": "host.region","pk": 32,"fields": {"name": "US-Central","code": "USC","centroid": "SRID=4326;POINT (-90 40)"}}
+{"model": "host.region","pk": 33,"fields": {"name": "US-West","code": "USW","centroid": "SRID=4326;POINT (-119 40)"}}
+{"model": "host.region","pk": 41,"fields": {"name": "Europe","code": "EU","centroid": "SRID=4326;POINT (2 46)"}}
+{"model": "host.region","pk": 51,"fields": {"name": "Asia SE-Mainland","code": "ASC","centroid": "SRID=4326;POINT (121 24)"}}
+{"model": "host.region","pk": 52,"fields": {"name": "Asia SE-Maritime","code": "ASM","centroid": "SRID=4326;POINT (104 1)"}}
+{"model": "host.region","pk": 53,"fields": {"name": "Asia East","code": "JPN","centroid": "SRID=4326;POINT (139 36)"}}
+{"model": "host.region","pk": 54,"fields": {"name": "India","code": "IND","centroid": "SRID=4326;POINT (73 19)"}}
+{"model": "host.region","pk": 61,"fields": {"name": "Oceania","code": "OCE","centroid": "SRID=4326;POINT (134 -25)"}}
+{"model": "host.region","pk": 71,"fields": {"name": "Middle East","code": "ME","centroid": "SRID=4326;POINT (55 25)"}}
+{"model": "host.region","pk": 81,"fields": {"name": "South Africa","code": "SAF","centroid": "SRID=4326;POINT (25 -29)"}}
+{"model": "host.region","pk": 91,"fields": {"name": "South America","code": "SAM","centroid": "SRID=4326;POINT (-53 -10)"}}

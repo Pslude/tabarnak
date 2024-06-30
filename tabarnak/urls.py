@@ -24,10 +24,10 @@ from django.conf import settings
 urlpatterns = [
 
     # /admin/
-    path('admin', admin.site.urls),
+    path('admin/', admin.site.urls),
 
     # /host/
-    path('host', include('host.urls')),
+    path('host/', include('host.urls')),
 
     # /favicon.ico
     path(
@@ -53,7 +53,7 @@ urlpatterns = [
         RedirectView.as_view(
             # url='https://tabarnak.io/',
             url='/host/',
-            permanent=True
+            permanent=False
         )
     ),
 
@@ -82,4 +82,3 @@ if settings.DEBUG:
         path('404/', default_views.page_not_found, {'exception': Http404()}),
         path('500/', default_views.server_error),
     )
-
