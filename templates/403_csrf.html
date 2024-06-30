@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load cache i18n %}
+
+{% block title %}{% translate "Forbidden" %}{% endblock %}
+
+{% block content %}
+  <h1>{% translate "Forbidden" %}</h1>
+  <p>{% translate "CSRF verification failed." %}</p>
+  <p>{% translate "Your request was rejected because the form verification is expired." %}</p>
+  <p>{% translate "Go back to the form and refresh the page to try again." %}</p>
+  <p><a href="/">{% translate "Back to Home" %}</a></p>
+{% endblock %}

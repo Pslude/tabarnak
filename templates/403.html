@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load cache i18n %}
+
+{% block title %}{% translate "Forbidden" %}{% endblock %}
+
+{% block content %}
+  <h1>{% translate "Forbidden" %}</h1>
+  <p>{% translate "Sorry, the page or resource you were trying to reach is forbidden." %}</p>
+  <p><a href="/">{% translate "Back to Home" %}</a></p>
+{% endblock %}

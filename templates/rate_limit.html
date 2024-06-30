@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load cache i18n %}
+
+{% block title %}{% translate "Forbidden" %}{% endblock %}
+
+{% block content %}
+  <h1>{% translate "Too Many Requests" %}</h1>
+  <p>{% translate "The request was denied due to too many attempts. Please try again later or contact the HelpDesk." %}</p>
+  <p><a href="/">{% translate "Back to Home" %}</a></p>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load cache i18n %}
+
+{% block title %}{% translate "Page Not Found" %}{% endblock %}
+
+{% block content %}
+  <h1>{% translate "Page Not Found" %}</h1>
+  <p>{% translate "Sorry, we couldn't find the page you're looking for." %}</p>
+  <p><a href="/">{% translate "Back to Home" %}</a></p>
+{% endblock %}

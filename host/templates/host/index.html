@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load cache i18n %}
+
+{% block title %}{% translate "Hosts" %}{% endblock %}
+
+{% block content %}
+  <h1>{% translate "Hosts" %}</h1>
+  <p><a href="{% url 'host:index' %}">Index</a></p>
+{% endblock %}
