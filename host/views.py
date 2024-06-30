@@ -2,7 +2,9 @@ from django.contrib.auth.models import User, Group
 from django.views.generic import TemplateView
 from rest_framework import viewsets, permissions
 
-from .serializers import UserSerializer, GroupSerializer
+from .models import Server, Region, Game, Studio
+from .serializers import UserSerializer, GroupSerializer, ServerSerializer, RegionSerializer, StudioSerializer, \
+    GameSerializer
 
 
 class IndexView(TemplateView):
@@ -29,3 +31,41 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all().order_by('name')
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+
+class ServerViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows servers to be viewed or edited.
+    """
+    queryset = Server.objects.all().order_by('pk')
+    serializer_class = ServerSerializer
+    filterset_fields = [
+        'game_mode__game__name',
+        'game_mode__name',
+        'status',
+        'release__name',
+    ]
+
+
+class RegionViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows regions to be viewed.
+    """
+    queryset = Region.objects.all().order_by('pk')
+    serializer_class = RegionSerializer
+
+
+class StudioViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows regions to be viewed.
+    """
+    queryset = Studio.objects.all().order_by('pk')
+    serializer_class = StudioSerializer
+
+
+class GameViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows regions to be viewed.
+    """
+    queryset = Game.objects.all().order_by('pk')
+    serializer_class = GameSerializer

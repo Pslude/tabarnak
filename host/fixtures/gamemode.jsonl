@@ -1,0 +1,3 @@
+{"model": "host.gamemode","pk": 1,"fields": {"game": 1,"name": "Sandbox","created": "2024-06-30"}}
+{"model": "host.gamemode","pk": 2,"fields": {"game": 2,"name": "Sandbox","created": "2024-06-30"}}
+{"model": "host.gamemode","pk": 3,"fields": {"game": 3,"name": "Sandbox","created": "2024-06-30"}}

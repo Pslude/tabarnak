@@ -1,0 +1,3 @@
+{"model": "host.game","pk": 1,"fields": {"name": "Waiting","studio": 1,"created": "2024-06-30"}}
+{"model": "host.game","pk": 2,"fields": {"name": "World","studio": 1,"created": "2024-06-30"}}
+{"model": "host.game","pk": 3,"fields": {"name": "Psilly","studio": 1,"created": "2024-06-30"}}

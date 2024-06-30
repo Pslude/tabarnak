@@ -70,15 +70,27 @@ class Server(models.Model):
     name = models.CharField(max_length=240)
     game_mode = models.ForeignKey(GameMode, on_delete=models.CASCADE)
     release = models.ForeignKey(Release, on_delete=models.CASCADE)
-    country = CountryField(null=True)
-    region = models.ForeignKey(Region, on_delete=models.RESTRICT, null=True)
-    location = models.CharField(max_length=240, null=True)
-    host_name = models.CharField(max_length=240, null=True)
+    country = CountryField()
+    region = models.ForeignKey(Region, on_delete=models.RESTRICT)
+    location = models.CharField(max_length=240)
+    host_name = models.CharField(max_length=240)
+    port = models.SmallIntegerField()
     ipv4 = models.GenericIPAddressField(protocol='IPv4', null=True)
     ipv6 = models.GenericIPAddressField(protocol='IPv6', null=True)
-    port = models.PositiveSmallIntegerField(null=True)  # PSIF may be limited to 32767 in some dbs
+    max_players = models.PositiveSmallIntegerField(default=1)
+    player_count = models.PositiveSmallIntegerField(default=0)
+    max_spectators = models.PositiveSmallIntegerField(default=0)
+    spectator_count = models.PositiveSmallIntegerField(default=0)
     created = models.DateField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    last_ping = models.DateTimeField(null=True, blank=True)
+    last_ping_latency = models.PositiveSmallIntegerField(null=True, blank=True)
+    STATUS_CHOICES = (
+        ('n', 'New'),
+        ('a', 'Active'),
+        ('o', 'Offline'),
+    )
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='n')
 
     def __str__(self):
         return f'{self.game_mode.game.name}[{self.game_mode.name}] "{self.name}"'
