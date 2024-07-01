@@ -3,7 +3,7 @@
 from ..settings.base import *
 
 # Server ID
-HOST_NAME = 'tabarnak.io'
+HOST_NAME = 'tabarnak.app'
 
 # Email
 EMAIL_BACKEND = 'postmark.django_backend.EmailBackend'
