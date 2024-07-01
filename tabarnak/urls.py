@@ -51,7 +51,6 @@ urlpatterns = [
     path(
         '',
         RedirectView.as_view(
-            # url='https://tabarnak.io/',
             url='/host/',
             permanent=False
         )
