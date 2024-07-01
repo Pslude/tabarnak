@@ -66,6 +66,7 @@ class Region(models.Model):
     class Meta:
         ordering = ('name', )
 
+
 class Server(models.Model):
     name = models.CharField(max_length=240)
     game_mode = models.ForeignKey(GameMode, on_delete=models.CASCADE)
@@ -91,6 +92,12 @@ class Server(models.Model):
         ('o', 'Offline'),
     )
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='n')
+    GAME_STATUS_CHOICES = (
+        ('l', 'Lobby'),
+        ('p', 'Game in Play'),
+        ('e', 'Game Ended'),
+    )
+    game_status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='l')
 
     def __str__(self):
         return f'{self.game_mode.game.name}[{self.game_mode.name}] "{self.name}"'
