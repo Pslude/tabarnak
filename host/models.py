@@ -95,7 +95,7 @@ class Server(models.Model):
     GAME_STATUS_CHOICES = (
         ('l', 'Lobby'),
         ('p', 'Game in Play'),
-        ('e', 'Game Ended'),
+        ('e', 'Game Over'),
     )
     game_status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='l')
 
@@ -105,3 +105,29 @@ class Server(models.Model):
     class Meta:
         ordering = ('name', )
         unique_together = ('game_mode', 'name', )
+
+
+class Player(models.Model):
+    server = models.ForeignKey(Server, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    created = models.DateField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    country = CountryField(null=True)
+    region = models.ForeignKey(Region, on_delete=models.RESTRICT, null=True)
+    location = models.CharField(max_length=240)
+    ip = models.GenericIPAddressField(null=True)
+    last_ping_latency = models.PositiveSmallIntegerField(null=True, blank=True)
+    STATUS_CHOICES = (
+        ('n', 'Joining'),
+        ('l', 'In Lobby'),
+        ('p', 'Playing'),
+        ('s', 'Spectating'),
+    )
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='n')
+
+    def __str__(self):
+        return str(self.user.username)
+
+    class Meta:
+        ordering = ('created', )
+        unique_together = ('user', 'server', )
