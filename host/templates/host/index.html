@@ -1,9 +1,40 @@
 {% extends 'base.html' %}
 {% load cache i18n %}
 
-{% block title %}{% translate "Hosts" %}{% endblock %}
+{% block title %}{% translate "Server List" %}{% endblock %}
 
 {% block content %}
-  <h1>{% translate "Hosts" %}</h1>
-  <p><a href="{% url 'host:index' %}">Index</a></p>
+  <h1>{% translate "Server List" %}</h1>
+
+  {% if object_list.count %}
+    <table class="table table-sm table-striped table-hover">
+      <thead>
+      <tr>
+        <td>
+          {% translate "Server Name" %}
+        </td>
+        <td>
+          {% translate "Details" %}
+        </td>
+      </tr>
+      </thead>
+      <tbody>
+      {% for server in object_list %}
+        <tr>
+          <td>
+            <a href="{% url 'host:server-profile' server.pk %}">
+              {{ server.name }}
+            </a>
+          </td>
+          <td>
+              {{ server }}
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+      <p>No active servers.</p>
+  {% endif %}
+
 {% endblock %}

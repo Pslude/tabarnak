@@ -6,8 +6,8 @@ from . import views
 app_name = 'host'
 
 router = routers.DefaultRouter()
-# router.register(r'users', views.UserViewSet)
-# router.register(r'groups', views.GroupViewSet)
+router.register(r'users', views.UserViewSet)
+router.register(r'groups', views.GroupViewSet)
 router.register(r'servers', views.ServerViewSet)
 router.register(r'regions', views.RegionViewSet)
 router.register(r'studios', views.StudioViewSet)
@@ -15,8 +15,7 @@ router.register(r'games', views.GameViewSet)
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path('<int:pk>/', views.HostDetailView.as_view(), name='host-detail'),
-    path('server/<int:pk>/', views.HostDetailView.as_view(), name='server-detail'),
+    path('server/<int:pk>/', views.ServerProfileView.as_view(), name='server-profile'),
 
     # REST framework API
     path('api/', include(router.urls)),

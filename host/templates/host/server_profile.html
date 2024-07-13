@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load cache i18n %}
+
+{% block title %}{% translate "Server Profile" %} - {{ object.name }}{% endblock %}
+
+{% block content %}
+  <div class="float-end btn-group">
+    <a href="{% url 'host:index' %}" class="btn btn-default">
+      {% translate "Server List" %}
+    </a>
+  </div>
+  <h1>{{ object.name }}</h1>
+  <p>{% translate "Game" %}: {{ object.game_mode.game.name }}</p>
+  <p>{% translate "Mode" %}: {{ object.game_mode.name }}</p>
+  <p>{% translate "Version" %}: {{ object.release }}</p>
+  <p>{% translate "Country" %}: {{ object.country }}</p>
+  <p>{% translate "Region" %}: {{ object.region }}</p>
+  <p>{% translate "Location" %}: {{ object.location }}</p>
+  <p>{% translate "Max Players" %}: {{ object.max_players }}</p>
+{% endblock %}
+self):
