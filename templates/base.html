@@ -13,8 +13,8 @@
     {% block extra_css %}{% endblock extra_css %}
     {% block extra_head %}{% endblock %}
     {# Analytics #}
-    {% if not request.is_preview and not debug %}
-        {# analytics scripts go here #}
+    {% if not debug %}
+      {# analytics scripts go here #}
       {% block extra_tracking %}{% endblock %}
     {% endif %}
 </head>
@@ -22,19 +22,16 @@
   <div class="col-lg-8 mx-auto p-3 py-md-5">
     <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
       <a href="https://tabarnak.app/" class="d-flex align-items-center text-dark text-decoration-none">
-        <span class="fs-4">Tabarnak</span>
+        <span class="fs-4">{% translate "Tabarnak" %}</span>
       </a>
     </header>
     <main>
       {% block container %}
-        {% block content %}
-          <h1>Tabarnak</h1>
-          <p class="fs-5 col-md-8">This sentence explains what POW7 is all about.</p>
-        {% endblock %}
+        {% block content %}{% endblock %}
       {% endblock container %}
     </main>
     <footer class="pt-5 my-5 text-muted border-top">
-      <a href="https://tabarnak.app/">tabarnak.app</a>
+      <a href="/">tabarnak.app</a>
     </footer>
   </div>
   {% block extra_js %}{% endblock extra_js %}

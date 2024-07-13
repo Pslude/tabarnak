@@ -2,6 +2,8 @@ from django.conf import settings
 from django.contrib.gis.db.models import PointField
 from django.db import models
 from django_countries.fields import CountryField
+from django.utils.translation import gettext as _
+
 
 
 class Studio(models.Model):
@@ -87,15 +89,15 @@ class Server(models.Model):
     last_ping = models.DateTimeField(null=True, blank=True)
     last_ping_latency = models.PositiveSmallIntegerField(null=True, blank=True)
     STATUS_CHOICES = (
-        ('n', 'New'),
-        ('a', 'Active'),
-        ('o', 'Offline'),
+        ('n', _('New')),
+        ('a', _('Active')),
+        ('o', _('Offline')),
     )
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='n')
     GAME_STATUS_CHOICES = (
-        ('l', 'Lobby'),
-        ('p', 'Game in Play'),
-        ('e', 'Game Over'),
+        ('l', _('Lobby')),
+        ('p', _('Game in Play')),
+        ('e', _('Game Over')),
     )
     game_status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='l')
 
@@ -105,6 +107,14 @@ class Server(models.Model):
     class Meta:
         ordering = ('name', )
         unique_together = ('game_mode', 'name', )
+
+    @property
+    def status_name(self):
+        return dict(self.STATUS_CHOICES)[self.status]
+
+    @property
+    def game_status_name(self):
+        return dict(self.GAME_STATUS_CHOICES)[self.game_status]
 
 
 class Player(models.Model):

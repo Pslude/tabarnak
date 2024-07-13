@@ -27,14 +27,16 @@
             </a>
           </td>
           <td>
-              {{ server }}
+            {% translate "Game Status" %}: {{ server.game_status_name }}
+            <br>
+            {% translate "Ping" %}: {{ server.last_ping_latency }} {% translate "ms" %}
           </td>
         </tr>
       {% endfor %}
       </tbody>
     </table>
   {% else %}
-      <p>No active servers.</p>
+      <p>{% translate "No active servers." %}</p>
   {% endif %}
 
 {% endblock %}
