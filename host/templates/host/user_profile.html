@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load cache i18n %}
+
+{% block title %}{% translate "User Profile" %} - {{ object.name }}{% endblock %}
+
+{% block content %}
+  <div class="float-end btn-group">
+    <a href="{% url 'host:index' %}" class="btn btn-default">
+      {% translate "Server List" %}
+    </a>
+  </div>
+  <h1>{% translate "User Profile" %}</h1>
+  <p>{% translate "Username" %}: {{ user.username }}</p>
+{% endblock %}

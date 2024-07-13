@@ -23,6 +23,10 @@ class ServerProfileView(DetailView):
     model = Server
 
 
+class UserProfileView(TemplateView):
+    template_name = 'host/user_profile.html'
+
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer

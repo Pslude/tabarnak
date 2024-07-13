@@ -18,13 +18,28 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import static
 from django.views.generic.base import RedirectView
+from django.contrib.auth.views import LoginView, LogoutView
+from authentication.views import JoinView
 
 from django.conf import settings
+
+from host.views import UserProfileView
 
 urlpatterns = [
 
     # /admin/
     path('admin/', admin.site.urls),
+
+    # /auth/
+    path('auth/', include('authentication.urls'), name='auth'),
+
+    # /accounts/profile/ ... default url after login
+    path('accounts/profile/', UserProfileView.as_view(), name='user-profile'),
+
+    # shorter urls for auth
+    path('join/', JoinView.as_view(), name='join'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 
     # /host/
     path('host/', include('host.urls')),
