@@ -7,8 +7,8 @@ from . import views
 app_name = 'host'
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
+# router.register(r'users', views.UserViewSet)
+# router.register(r'groups', views.GroupViewSet)
 router.register(r'servers', views.ServerViewSet)
 router.register(r'regions', views.RegionViewSet)
 router.register(r'studios', views.StudioViewSet)
