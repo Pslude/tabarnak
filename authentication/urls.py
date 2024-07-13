@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.urls import path
 from django.contrib.auth import views as auth_views
@@ -11,7 +12,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('join/', views.JoinView.as_view(), name='join'),
     path('join/done/', views.JoinDoneView.as_view(), name='join_done'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(next_page=settings.LOGOUT_REDIRECT_URL), name='logout'),
     path('logged_out/', views.LoggedOutView.as_view(), name='logged_out'),
     path('password_change/', auth_views.PasswordChangeView.as_view(template_name='authentication/password_change_form.html'), name='password_change'),
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='authentication/password_change_done.html'), name='password_change_done'),

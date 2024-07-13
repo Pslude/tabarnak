@@ -1,4 +1,4 @@
-{% load static i18n %}
+{% load static i18n django_bootstrap5 %}
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}">
 <head>
@@ -20,17 +20,34 @@
 </head>
 <body>
   <div class="col-lg-8 mx-auto p-3 py-md-5">
-    <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-      <a href="https://tabarnak.app/" class="d-flex align-items-center text-dark text-decoration-none">
-        <span class="fs-4">{% translate "Tabarnak" %}</span>
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        {% translate "Tabarnak" %}
       </a>
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li>
+          <a href="/" class="nav-link px-2 link-secondary">
+            {% translate "Home" %}
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'host:index' %}" class="nav-link px-2 link-dark">
+            {% translate "Servers" %}
+          </a>
+        </li>
+      </ul>
+      <div class="col-md-3 text-end">
+        {% include 'includes/main_menu.html' %}
+      </div>
     </header>
     <main>
       {% block container %}
+        {% bootstrap_messages %}
         {% block content %}{% endblock %}
       {% endblock container %}
     </main>
     <footer class="pt-5 my-5 text-muted border-top">
+      <time class="float-end">{% now 'DATETIME_FORMAT' %}</time>
       <a href="/">tabarnak.app</a>
     </footer>
   </div>

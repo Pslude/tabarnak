@@ -1,0 +1,16 @@
+{% load i18n %}
+
+  {% if request.user.is_authenticated %}
+    <form method="post" action="{% url 'logout' %}">{% csrf_token %}
+      <button type="submit" class="btn btn-outline-primary">
+        {% translate "Log out" %}
+      </button>
+    </form>
+  {% else %}
+    <a href="{% url 'login' %}" class="btn btn-outline-primary me-2">
+      {% translate "Log in" %}
+    </a>
+    <a href="{% url 'join' %}" class="btn btn-outline-primary">
+      {% translate "Sign up" %}
+    </a>
+  {% endif %}

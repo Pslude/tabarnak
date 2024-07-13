@@ -1,24 +1,17 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n django_bootstrap5 %}
 
 {% block title %}{% translate 'Create Account' %}{% endblock %}
 
 {% block content %}
-<main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
-  <section>
-    <h3 class="font-bold text-2xl">{% translate 'Create Account' %}</h3>
-    <p class="text-gray-600 pt-2">{% translate 'Choose a unique username and a password to create an account.' %}</p>
-  </section>
-  <section class="mt-10">
-    <form class="flex flex-col" action="{{ app_path }}" method="post">{% csrf_token %}
-      <div class="mb-6">
-        {{ form }}
-      </div>
-      <button type="submit">{% translate "Create Account" %}</button>
-    </form>
-  </section>
-</main>
-<div class="max-w-lg mx-auto text-center mt-12 mb-6">
-  <p class="text-white">{% translate "Already have an account?" %} <a href="{% url 'authentication:login' %}" class="font-bold hover:underline">{% translate "Log in" %}</a>.</p>
-</div>
+
+  {% bootstrap_messages %}
+
+  <h1>{% translate 'Create Account' %}</h1>
+
+  <form action="{{ app_path }}" method="post" class="form">{% csrf_token %}
+    {% bootstrap_form form %}
+    {% bootstrap_button button_type="submit" content="Create Account" %}
+  </form>
+
 {% endblock %}

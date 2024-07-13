@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
     'rest_framework.authtoken',
+    'django_bootstrap5',
     'authentication',
     'host',
 ]
@@ -112,6 +113,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Auth
+LOGOUT_REDIRECT_URL = '/auth/logged_out/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
