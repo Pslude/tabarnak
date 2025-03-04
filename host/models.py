@@ -3,12 +3,12 @@ from django.contrib.gis.db.models import PointField
 from django.db import models
 from django_countries.fields import CountryField
 from django.utils.translation import gettext as _
-
+from mypy.stubinfo import stub_distribution_name
 
 
 class Studio(models.Model):
     name = models.CharField(max_length=240, unique=True)
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.RESTRICT)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.RESTRICT, null=True)
     country = CountryField(null=True)
     created = models.DateField(auto_now_add=True)
 

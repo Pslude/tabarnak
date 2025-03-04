@@ -13,12 +13,16 @@ import os
 from os.path import dirname, abspath, basename, normpath, join
 from pathlib import Path
 
+
+# Base directories
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DJANGO_ROOT = dirname(dirname(abspath(__file__)))
 SITE_ROOT = dirname(DJANGO_ROOT)
 WSGI_PATH = basename(DJANGO_ROOT)
+
+# Site Settings
 SITE_NAME = 'tabarnak'
 
 # SECURITY WARNING: keep the secret key used in production secret! SECRET_KEY is loaded from /.env
@@ -119,13 +123,12 @@ LOGOUT_REDIRECT_URL = '/auth/logged_out/'
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
+USE_I18N = True
 LANGUAGE_CODE = 'en-ca'
 
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
 USE_TZ = True
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Toronto'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -136,6 +139,7 @@ STATIC_ROOT = '/srv/http/tabarnak.app/static/'
 STATICFILES_DIRS = (
     normpath(join(SITE_ROOT, 'static')),
 )
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
